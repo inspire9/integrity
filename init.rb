@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
 
-require ".bundle/environment"
+require "bundler/setup"
 require "integrity"
 
 # Uncomment as appropriate for the notifier you want to use
@@ -20,11 +20,11 @@ require "integrity"
 # require "integrity/notifier/amqp"
 
 Integrity.configure do |c|
-  c.database     =  "sqlite3:integrity.db"
-  c.directory    =  "builds"
-  c.base_url     =  "http://ci.example.org"
-  c.log          =  "integrity.log"
-  c.github_token =  "SECRET"
-  c.build_all    = true
-  c.builder      = :threaded, 5
+  c.database     "postgres://localhost/integrity"
+  c.directory    "builds"
+  c.base_url     "http://ci.example.org"
+  c.log          "integrity.log"
+  c.github       "SECRET"
+  c.build_all!
+  c.builder      :threaded, 5
 end

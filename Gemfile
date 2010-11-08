@@ -16,11 +16,14 @@ gem "rake"
 gem "haml", "2.2.17"
 gem "thor", "0.9.9"
 gem "addressable", "2.1.1"
-gem "json", "1.1.9"
+gem "json", "1.4"
 gem "sinatra", "1.0.0"
 gem "sinatra-authorization", "1.0.0"
 gem "bcat", "~>0.5"
 gem "rack", "1.1.0"
+
+# Required to deploy on Heroku
+gem "do_postgres", "0.10.2"
 
 # These are dependencies for the various notifiers. Uncomment as appropriate.
 # = Email
@@ -41,14 +44,14 @@ gem "rack", "1.1.0"
 # gem "resque"
 
 # Uncomment if you're using pg or mysql instead of sqlite
-# gem "pg"
+gem "pg"
 # gem "mysql"
 
 # = Development dependencies.
 group :test do
   gem "ruby-debug" if RUBY_VERSION < '1.9'
   gem "sqlite3-ruby"
-  gem "activerecord"
+  gem "activerecord", "2.3.10"
   gem "delayed_job", :git => "git://github.com/tobi/delayed_job.git"
   gem "rr"
   gem "mocha"
