@@ -1,6 +1,6 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
 
-require ".bundle/environment"
+require "bundler/setup"
 require "integrity"
 
 # Uncomment as appropriate for the notifier you want to use
@@ -16,7 +16,7 @@ require "integrity"
 # require "integrity/notifier/http"
 
 Integrity.configure do |c|
-  c.database     "sqlite3:integrity.db"
+  c.database     "postgres://localhost/integrity"
   c.directory    "builds"
   c.base_url     "http://ci.example.org"
   c.log          "integrity.log"

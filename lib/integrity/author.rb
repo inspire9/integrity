@@ -1,8 +1,5 @@
 module Integrity
-  class Author < DataMapper::Type
-    primitive String
-    size      65535
-    lazy      true
+  class Author < DataMapper::Property::String
 
     class AuthorStruct < Struct.new(:name, :email)
       def self.parse(string)
